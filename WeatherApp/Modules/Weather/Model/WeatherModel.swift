@@ -17,6 +17,7 @@ struct WeatherModel : Codable {
     let id : Int?
     let name : String?
     let cod : Int?
+    var currentLocation : Int?
 
     enum CodingKeys: String, CodingKey {
 
@@ -33,6 +34,7 @@ struct WeatherModel : Codable {
         case id = "id"
         case name = "name"
         case cod = "cod"
+        case currentLocation = "currentLocation"
     }
 
     init(from decoder: Decoder) throws {
@@ -50,6 +52,7 @@ struct WeatherModel : Codable {
         id = try values.decodeIfPresent(Int.self, forKey: .id)
         name = try values.decodeIfPresent(String.self, forKey: .name)
         cod = try values.decodeIfPresent(Int.self, forKey: .cod)
+        currentLocation = try values.decodeIfPresent(Int.self, forKey: .currentLocation)
     }
 }
 

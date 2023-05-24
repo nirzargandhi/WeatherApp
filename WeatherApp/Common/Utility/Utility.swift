@@ -30,7 +30,7 @@ struct Utility {
             hud.mode = .indeterminate
             hud.bezelView.color = .clear
             hud.bezelView.style = .solidColor
-            hud.contentColor = .appBlack()
+            hud.contentColor = .appGray()
         }
     }
     
@@ -137,10 +137,10 @@ struct Utility {
         return false
     }
 
-    //MARK: - Set Root CityListVC Method
-    func setRootCityListVC() {
-        let objCityListVC = AllStoryBoard.Main.instantiateViewController(withIdentifier: ViewControllerName.kCityListVC) as? CityListVC
-        let navigationViewController = UINavigationController(rootViewController: objCityListVC!)
+    //MARK: - Set Root WeatherVC Method
+    func setRootWeatherVC() {
+        let objWeatherVC = AllStoryBoard.Main.instantiateViewController(withIdentifier: ViewControllerName.kWeatherVC) as? WeatherVC
+        let navigationViewController = UINavigationController(rootViewController: objWeatherVC!)
         GlobalConstants.appDelegate.window!.rootViewController = navigationViewController
         GlobalConstants.appDelegate.window?.makeKeyAndVisible()
     }
@@ -215,6 +215,8 @@ func isKeyPresentInUserDefaults(key: String) -> Bool {
 //MARK: - UserDefault & KeyChain Data Clear Method
 func userDefaultKeyChainDataClear(isTermsConditionsSelected : Bool) {
 
+    UserDefaults.standard.removeObject(forKey: UserDefaultsKey.kLastSearchedLocation)
+    UserDefaults.standard.synchronize()
 }
 
 //MARK: - Clear Global Variables Method

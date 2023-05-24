@@ -1,6 +1,6 @@
 //
 //  AppDelegate+Configuration.swift
-//  Rello
+//  WeatherApp
 //
 
 //MARK: - Environment Main Class

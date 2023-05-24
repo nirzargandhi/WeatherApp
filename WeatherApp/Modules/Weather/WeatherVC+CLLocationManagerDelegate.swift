@@ -1,10 +1,10 @@
 //
-//  CityListVC+CLLocationManagerDelegate.swift
+//  WeatherVC+CLLocationManagerDelegate.swift
 //  WeatherApp
 //
 
 //MARK: - CLLocationManagerDelegate Extension
-extension CityListVC : CLLocationManagerDelegate {
+extension WeatherVC : CLLocationManagerDelegate {
 
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         if status == .authorizedWhenInUse {
@@ -17,10 +17,6 @@ extension CityListVC : CLLocationManagerDelegate {
         objLocationManager.stopUpdatingLocation()
 
         if let lastLocation = locations.last {
-
-            let strCurrentLocation = "\(lastLocation.coordinate.latitude) \(lastLocation.coordinate.longitude)"
-            UserDefaults.standard.set(strCurrentLocation, forKey: UserDefaultsKey.kCurrentLocation)
-
             if isAPICallFirstTime {
                 wsWeatherData(latitude: lastLocation.coordinate.latitude, longitude: lastLocation.coordinate.longitude)
 
@@ -39,7 +35,7 @@ extension CityListVC : CLLocationManagerDelegate {
 
         if arrWeatherData.count == 0 {
             lblNoData.isHidden = false
-            tblCityList.isHidden = true
+            tblWeatherList.isHidden = true
         }
     }
 }

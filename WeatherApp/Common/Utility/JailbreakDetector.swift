@@ -1,6 +1,6 @@
 //
 //  JailbreakDetector.swift
-//  Rello
+//  WeatherApp
 //
 //  Created by Aleksandr Shepelenok on 21.03.23.
 //

@@ -40,16 +40,16 @@
             </objects>
             <point key="canvasLocation" x="-8.8000000000000007" y="-27.436281859070466"/>
         </scene>
-        <!--City ListVC-->
+        <!--WeatherVC-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="CityListVC" id="BYZ-38-t0r" customClass="CityListVC" customModule="WeatherApp_Dev" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WeatherVC" id="BYZ-38-t0r" customClass="WeatherVC" customModule="WeatherApp_Dev" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="City List" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XvQ-Xj-frf">
-                                <rect key="frame" x="20" y="20" width="121" height="36.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Weather App" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XvQ-Xj-frf">
+                                <rect key="frame" x="20" y="20" width="193" height="36.5"/>
                                 <fontDescription key="fontDescription" name="Inter-Bold" family="Inter" pointSize="30"/>
                                 <color key="textColor" name="AppBlack"/>
                                 <nil key="highlightedColor"/>
@@ -100,7 +100,7 @@
                                 <rect key="frame" x="0.0" y="56.5" width="375" height="610.5"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CellCityList" id="0ss-85-ajM" customClass="CityListTVC" customModule="WeatherApp_Dev" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CellWeather" id="0ss-85-ajM" customClass="WeatherTVC" customModule="WeatherApp_Dev" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="50" width="375" height="288"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0ss-85-ajM" id="iVj-Ps-lOZ">
@@ -300,7 +300,7 @@
                             <constraint firstItem="ZZl-2W-8LL" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="0Rg-0K-X29"/>
                             <constraint firstItem="XvQ-Xj-frf" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="5UC-Hm-1gz"/>
                             <constraint firstItem="mmC-kU-zeM" firstAttribute="top" secondItem="XvQ-Xj-frf" secondAttribute="bottom" id="C9o-ok-FCX"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="ZZl-2W-8LL" secondAttribute="bottom" id="M0N-jc-TjU"/>
+                            <constraint firstAttribute="bottom" secondItem="ZZl-2W-8LL" secondAttribute="bottom" id="IuQ-Zm-x9P"/>
                             <constraint firstItem="chq-Fd-kNw" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Q4f-SJ-hYt"/>
                             <constraint firstAttribute="trailing" secondItem="1w7-Cd-avX" secondAttribute="trailing" constant="20" id="Rkl-al-Plm"/>
                             <constraint firstItem="XvQ-Xj-frf" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="ScP-mS-Bdn"/>
@@ -319,7 +319,7 @@
                         <outlet property="nslcTxtSearchBottom" destination="jvL-VQ-JBC" id="maO-TG-gyt"/>
                         <outlet property="nslcTxtSearchHeight" destination="1Qh-ER-tJK" id="1XA-xb-fSR"/>
                         <outlet property="nslcTxtSearchTop" destination="C9o-ok-FCX" id="q9m-xi-Xz5"/>
-                        <outlet property="tblCityList" destination="ZZl-2W-8LL" id="SNF-Xe-Njl"/>
+                        <outlet property="tblWeatherList" destination="ZZl-2W-8LL" id="CsM-C9-vEe"/>
                         <outlet property="txtSearch" destination="mmC-kU-zeM" id="pkB-Ws-TWb"/>
                     </connections>
                 </viewController>

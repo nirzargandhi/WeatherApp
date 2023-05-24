@@ -1,10 +1,10 @@
 //
-//  CityListVC+UITextFieldDelegate.swift
+//  WeatherVC+UITextFieldDelegate.swift
 //  WeatherApp
 //
 
 //MARK: - UITextField Delegate Extension
-extension CityListVC : UITextFieldDelegate {
+extension WeatherVC : UITextFieldDelegate {
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
 
@@ -18,9 +18,6 @@ extension CityListVC : UITextFieldDelegate {
     }
 
     func textFieldDidEndEditing(_ textField: UITextField) {
-
-        UserDefaults.standard.set(textField.text ?? "", forKey: UserDefaultsKey.kLastSearchedLocation)
-
         wsSearchWeatherData()
     }
 }

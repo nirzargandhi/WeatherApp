@@ -1,10 +1,10 @@
 //
-//  CityListVC+UITableViewDelegate+UITableViewDataSource.swift
+//  WeatherVC+UITableViewDelegate+UITableViewDataSource.swift
 //  WeatherApp
 //
 
 //MARK: - UITableViewDelegate & UITableViewDataSource Extension
-extension CityListVC : UITableViewDelegate, UITableViewDataSource {
+extension WeatherVC : UITableViewDelegate, UITableViewDataSource {
 
     func numberOfSections(in tableView: UITableView) -> Int {
         return arrWeatherData.count
@@ -24,11 +24,11 @@ extension CityListVC : UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
-        let cell = tableView.dequeueReusableCell(withIdentifier: CellIdentifiers.kCellCityList, for: indexPath) as! CityListTVC
+        let cell = tableView.dequeueReusableCell(withIdentifier: CellIdentifiers.kCellWeather, for: indexPath) as! WeatherTVC
 
         let dictWeather = (arrWeatherData[indexPath.section].weather?.count ?? 0) > 0 ? arrWeatherData[indexPath.section].weather?[0] : nil
 
-        cell.lblCity.text = arrWeatherData[indexPath.section].name ?? ""
+        cell.lblCity.text = (arrWeatherData[indexPath.section].name ?? "") + ((arrWeatherData[indexPath.section].currentLocation ?? 0) > 0 ? " - My location" : "")
 
         cell.imgvIcon.sd_setImage(with: URL(string: "\(WebServiceURL.iconURL)\(dictWeather?.icon ?? "")@2x.png"))
 

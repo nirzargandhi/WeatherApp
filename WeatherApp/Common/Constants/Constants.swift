@@ -33,13 +33,13 @@ enum AllStoryBoard {
 //MARK: - ViewController Names
 enum ViewControllerName {
 
-    static let kCityListVC = "CityListVC"
+    static let kWeatherVC = "WeatherVC"
 }
 
 //MARK: - Cell Identifiers
 enum CellIdentifiers {
 
-    static let kCellCityList = "CellCityList"
+    static let kCellWeather = "CellWeather"
 }
 
 //MARK: - Message's
@@ -117,7 +117,6 @@ enum WebServiceParameter {
 //MARK: - User Default
 enum UserDefaultsKey {
 
-    static let kCurrentLocation = "current_location"
     static let kLastSearchedLocation = "last_searched_location"
 }
 

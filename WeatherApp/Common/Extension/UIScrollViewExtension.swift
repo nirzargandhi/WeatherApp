@@ -1,6 +1,6 @@
 //
 //  UIScrollViewExtension.swift
-//  Rello
+//  WeatherApp
 //
 
 extension UIScrollView {

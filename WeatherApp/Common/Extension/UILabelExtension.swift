@@ -1,6 +1,6 @@
 //
 //  UILabelExtension.swift
-//  Rello
+//  WeatherApp
 //
 
 extension UILabel {

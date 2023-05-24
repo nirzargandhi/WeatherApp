@@ -1,6 +1,6 @@
 //
 //  AppDelegate+Configuration.swift
-//  Rello
+//  WeatherApp
 // 
 
 //MARK: - AppDelegate Extension
@@ -35,6 +35,6 @@ extension AppDelegate {
     
     //MARK: - Set Root Controller Method
     func setRootController() {
-        Utility().setRootCityListVC()
+        Utility().setRootWeatherVC()
     }
 }

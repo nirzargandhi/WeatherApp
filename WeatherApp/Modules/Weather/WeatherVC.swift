@@ -1,9 +1,9 @@
 //
-//  CityListVC.swift
+//  WeatherVC.swift
 //  WeatherApp
 //
 
-class CityListVC: UIViewController {
+class WeatherVC: UIViewController {
 
     //MARK: - UIButton Outlet
     @IBOutlet weak var btnSearch: UIButton!
@@ -17,7 +17,7 @@ class CityListVC: UIViewController {
     @IBOutlet weak var nslcTxtSearchHeight: NSLayoutConstraint!
 
     //MARK: - UITableView Outlet
-    @IBOutlet weak var tblCityList: UITableView!
+    @IBOutlet weak var tblWeatherList: UITableView!
 
     //MARK: - UILabel Outlet
     @IBOutlet weak var lblNoData: UILabel!
@@ -42,13 +42,13 @@ class CityListVC: UIViewController {
         checkLocationPermision()
 
         if #available(iOS 15.0, *) {
-            tblCityList.sectionHeaderTopPadding = 0.0
-            tblCityList.tableHeaderView = UIView()
+            tblWeatherList.sectionHeaderTopPadding = 0.0
+            tblWeatherList.tableHeaderView = UIView()
         }
 
-        tblCityList.rowHeight = UITableView.automaticDimension
-        tblCityList.estimatedRowHeight = UITableView.automaticDimension
-        tblCityList.tableFooterView = UIView()
+        tblWeatherList.rowHeight = UITableView.automaticDimension
+        tblWeatherList.estimatedRowHeight = UITableView.automaticDimension
+        tblWeatherList.tableFooterView = UIView()
 
         if let strLastSearchedLocation = UserDefaults.standard.string(forKey: UserDefaultsKey.kLastSearchedLocation) {
 
@@ -126,7 +126,7 @@ class CityListVC: UIViewController {
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: {(AlertAction) in
             if self.arrWeatherData.count == 0 {
                 self.lblNoData.isHidden = false
-                self.tblCityList.isHidden = true
+                self.tblWeatherList.isHidden = true
             }
         })
 
@@ -180,6 +180,24 @@ class CityListVC: UIViewController {
         txtSearch.text = ""
     }
 
+    //MARK: - Set Data Method
+    private func setData() {
+
+        arrWeatherData = arrWeatherData.sorted(by: { (a, b) -> Bool in
+            return (a.currentLocation ?? 0) > (b.currentLocation ?? 0)
+        })
+
+        if arrWeatherData.count > 0 {
+            tblWeatherList.reloadData()
+
+            tblWeatherList.isHidden = false
+            lblNoData.isHidden = true
+        } else {
+            lblNoData.isHidden = false
+            tblWeatherList.isHidden = true
+        }
+    }
+
     //MARK: - Webservice Call Methods
     func wsWeatherData(latitude : Double, longitude : Double) {
 
@@ -192,26 +210,20 @@ class CityListVC: UIViewController {
 
         ApiCall().get(apiUrl: strURL, model: WeatherModel.self) { [weak self] (success, responseData) in guard let self else { return }
 
-            if success, let responseData = responseData as? WeatherModel, responseData.cod == 200 {
-                
+            if success, var responseData = responseData as? WeatherModel, responseData.cod == 200 {
+
+                responseData.currentLocation = 1
+
                 arrWeatherData.append(responseData)
 
-                if arrWeatherData.count > 0 {
-                    tblCityList.reloadData()
-
-                    tblCityList.isHidden = false
-                    lblNoData.isHidden = true
-                } else {
-                    lblNoData.isHidden = false
-                    tblCityList.isHidden = true
-                }
+                setData()
             } else {
                 mainThread {
                     self.view.makeToast(responseData != nil ? Utility().wsFailResponseMessage(responseData: responseData!) : AlertMessage.msgError)
 
                     if self.arrWeatherData.count == 0 {
                         self.lblNoData.isHidden = false
-                        self.tblCityList.isHidden = true
+                        self.tblWeatherList.isHidden = true
                     }
                 }
             }
@@ -229,21 +241,17 @@ class CityListVC: UIViewController {
 
         ApiCall().get(apiUrl: strURL, model: WeatherModel.self, isLoader: isLoader) { [weak self] (success, responseData) in guard let self else { return }
 
-            if success, let responseData = responseData as? WeatherModel, responseData.cod == 200 {
+            if success, var responseData = responseData as? WeatherModel, responseData.cod == 200 {
+
+                responseData.currentLocation = 0
 
                 arrWeatherData.append(responseData)
 
+                UserDefaults.standard.set(txtSearch.text ?? "", forKey: UserDefaultsKey.kLastSearchedLocation)
+
+                setData()
+
                 clearTextField()
-
-                if arrWeatherData.count > 0 {
-                    tblCityList.reloadData()
-
-                    tblCityList.isHidden = false
-                    lblNoData.isHidden = true
-                } else {
-                    lblNoData.isHidden = false
-                    tblCityList.isHidden = true
-                }
             } else {
                 mainThread {
                     self.view.makeToast(responseData != nil ? Utility().wsFailResponseMessage(responseData: responseData!) : AlertMessage.msgError)
@@ -252,7 +260,7 @@ class CityListVC: UIViewController {
 
                     if self.arrWeatherData.count == 0 {
                         self.lblNoData.isHidden = false
-                        self.tblCityList.isHidden = true
+                        self.tblWeatherList.isHidden = true
                     }
                 }
             }
