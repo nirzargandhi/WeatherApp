@@ -1,0 +1,30 @@
+PODS:
+  - IQKeyboardManagerSwift (6.5.11)
+  - MBProgressHUD (1.2.0)
+  - SDWebImage (5.15.8):
+    - SDWebImage/Core (= 5.15.8)
+  - SDWebImage/Core (5.15.8)
+  - Toast-Swift (5.0.1)
+
+DEPENDENCIES:
+  - IQKeyboardManagerSwift (~> 6.5.11)
+  - MBProgressHUD (~> 1.2.0)
+  - SDWebImage (~> 5.15.8)
+  - Toast-Swift (~> 5.0.1)
+
+SPEC REPOS:
+  trunk:
+    - IQKeyboardManagerSwift
+    - MBProgressHUD
+    - SDWebImage
+    - Toast-Swift
+
+SPEC CHECKSUMS:
+  IQKeyboardManagerSwift: c7955c0bdbf7b2eb29bb7daaa44e3d90f55a9a85
+  MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
+  SDWebImage: cb032eba469c54e0000e78bcb0a13cdde0a52798
+  Toast-Swift: 9b6a70f28b3bf0b96c40d46c0c4b9d6639846711
+
+PODFILE CHECKSUM: 2ac2c30dd2184f7930adde13c4b36faf45110c61
+
+COCOAPODS: 1.12.1
