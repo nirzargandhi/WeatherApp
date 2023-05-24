@@ -13,7 +13,7 @@
 		<key>Environment</key>
 		<string>Production</string>
 		<key>Host</key>
-		<string></string>
+		<string>https://api.openweathermap.org/data/2.5/</string>
 	</dict>
 	<key>NSAppTransportSecurity</key>
 	<dict>

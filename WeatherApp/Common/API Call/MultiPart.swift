@@ -51,51 +51,20 @@ class MultiPart: NSObject {
                             completion(false, AlertMessage.msgUnauthorized as AnyObject)
                         }
                     } else {
-                        if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 201 {
-                            if data.count > 0 {
-                                if let convertedJsonIntoDict = try JSONSerialization.jsonObject(with: data, options: []) as? NSDictionary, Environment.Val.appID == 0 {
-                                    print(convertedJsonIntoDict)
-                                }
 
-                                let dictResponse = try decoder.decode(model, from: data)
-                                mainThread {
-                                    completion(true, dictResponse as AnyObject)
-                                }
-                            } else {
-                                mainThread {
-                                    completion(true, nil)
-                                }
-                            }
-                        } else if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 {
-                            if data.count > 0 {
-                                if let convertedJsonIntoDict = try JSONSerialization.jsonObject(with: data, options: []) as? NSDictionary, Environment.Val.appID == 0 {
-                                    print(convertedJsonIntoDict)
-                                }
+                        if let convertedJsonIntoDict = try JSONSerialization.jsonObject(with: data, options: []) as? NSDictionary, Environment.Val.appID == 0 {
+                            print(convertedJsonIntoDict)
+                        }
 
-                                let dictResponse = try decoder.decode(model, from: data)
-                                mainThread {
-                                    completion(true, dictResponse as AnyObject)
-                                }
-                            } else {
-                                mainThread {
-                                    completion(true, nil)
-                                }
-                            }
-                        } else if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 404 {
-                            if data.count > 0 {
-                                let dictResponse = try decoder.decode(model, from: data)
-                                mainThread {
-                                    completion(false, dictResponse as AnyObject)
-                                }
-                            } else {
-                                mainThread {
-                                    completion(false, nil)
-                                }
+                        if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 {
+                            let dictResponse = try decoder.decode(model, from: data)
+                            mainThread {
+                                completion(true, dictResponse as AnyObject)
                             }
                         } else {
                             let dictResponse = try decoder.decode(GeneralResponseModel.self, from: data)
                             mainThread {
-                                completion(false, dictResponse.Msg as AnyObject)
+                                completion(false, dictResponse.message as AnyObject)
                             }
                         }
                     }

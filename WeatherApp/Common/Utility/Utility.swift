@@ -243,3 +243,11 @@ func isNotificationEnabled(completion:@escaping (_ enabled:Bool)->()) {
         }
     }
 }
+
+//MARK: - Debug Print Method
+func debugPrint(_ text: String) {
+
+    if Environment.isDevelopment {
+        print(text)
+    }
+}

@@ -5,6 +5,7 @@
 //MARK: - Colors
 extension UIColor { 
 
+    class func appBg() -> UIColor { return UIColor(named: "AppBg")! }
     class func appBlack() -> UIColor { return UIColor(named: "AppBlack")! }
     class func appGray() -> UIColor { return UIColor(named: "AppGray")! }
     class func appLightGray() -> UIColor { return UIColor(named: "AppLightGray")! }
@@ -95,24 +96,36 @@ enum AlertMessage {
 enum WebServiceURL {
     
     //Dev URL
-    static let mainDevURL = "https://dev.telgatech.com/rello/"
+    static let mainDevURL = "https://api.openweathermap.org/data/2.5/"
     
     //Live URL
-    static let mainLiveURL = "https://telgatech.com/rello/"
+    static let mainLiveURL = "https://api.openweathermap.org/data/2.5/"
 
-    static let staticURL = strMainURL + "static"
+    static let weatherURL = strMainURL + "weather?"
+    
+    static let iconURL = "https://openweathermap.org/img/wn/"
 }
 
 //MARK: - Web Service Parameters
 enum WebServiceParameter {
 
-    static let pEmail = "Email"
+    static let pLat = "lat"
+    static let pLon = "lon"
+    static let pUnits = "units"
+    static let pAppId = "appid"
 }
 
 //MARK: - User Default
 enum UserDefaultsKey {
 
-    static let kEmailID = "email_id"
+    static let kCurrentLocation = "current_location"
+    static let kLastSearchedLocation = "last_searched_location"
+}
+
+//MARK: - Open Weather APIKey
+enum OpenWeather {
+
+    static let pAPIKey = "558e0d2d3d9e5d4a804052c771a0345b"
 }
 
 //MARK: - Constants
@@ -145,6 +158,7 @@ enum DateAndTimeFormatString {
     static let strDateFormate_ddMMyyyy = "dd/MM/yyyy"
     static let strDateFormate_ddmmmmmyyyy = "dd MMMM yyyy"
     static let strDateFormate_yyyy = "yyyy"
+    static let strDateFormate_hhmma = "hh:mm a"
 }
 
 

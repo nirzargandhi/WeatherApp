@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "E6005CF82A1DC3D6003250B4"
-               BuildableName = "WeatherApp-Prod.app"
-               BlueprintName = "WeatherApp-Prod"
+               BlueprintIdentifier = "E6005CE92A1DC3C9003250B4"
+               BuildableName = "WeatherApp-Dev.app"
+               BlueprintName = "WeatherApp-Dev"
                ReferencedContainer = "container:WeatherApp.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -43,9 +43,9 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "E6005CF82A1DC3D6003250B4"
-            BuildableName = "WeatherApp-Prod.app"
-            BlueprintName = "WeatherApp-Prod"
+            BlueprintIdentifier = "E6005CE92A1DC3C9003250B4"
+            BuildableName = "WeatherApp-Dev.app"
+            BlueprintName = "WeatherApp-Dev"
             ReferencedContainer = "container:WeatherApp.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -73,9 +73,9 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "E6005CF82A1DC3D6003250B4"
-            BuildableName = "WeatherApp-Prod.app"
-            BlueprintName = "WeatherApp-Prod"
+            BlueprintIdentifier = "E6005CE92A1DC3C9003250B4"
+            BuildableName = "WeatherApp-Dev.app"
+            BlueprintName = "WeatherApp-Dev"
             ReferencedContainer = "container:WeatherApp.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

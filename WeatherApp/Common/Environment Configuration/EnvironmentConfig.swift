@@ -13,9 +13,9 @@ class Environment {
 extension Environment.Enums {
     
     enum EnvironmentType: String {
-        
-        case production = "Production"
+
         case development = "Development"
+        case production = "Production"
     }
 }
 
@@ -46,4 +46,8 @@ extension Environment.Val {
     
     static var appID: Int { return get(value: .appID, type: Int.self)! }
     static var host: String { return get(value: .host, type: String.self)! }
+}
+
+extension Environment {
+    static var isDevelopment: Bool { Val.appID == 0 }
 }

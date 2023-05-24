@@ -4,10 +4,24 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Inter-Bold.ttf">
+            <string>Inter-Bold</string>
+        </array>
+        <array key="Inter-Medium.ttf">
+            <string>Inter-Medium</string>
+        </array>
+        <array key="Inter-Regular.ttf">
+            <string>Inter-Regular</string>
+        </array>
+        <array key="Inter-SemiBold.ttf">
+            <string>Inter-SemiBold</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Navigation Controller-->
         <scene sceneID="hti-wx-YR6">
@@ -33,10 +47,244 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="City List" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XvQ-Xj-frf">
+                                <rect key="frame" x="20" y="20" width="121" height="36.5"/>
+                                <fontDescription key="fontDescription" name="Inter-Bold" family="Inter" pointSize="30"/>
+                                <color key="textColor" name="AppBlack"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1w7-Cd-avX">
+                                <rect key="frame" x="325" y="23.5" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="QYZ-AQ-Xs3"/>
+                                    <constraint firstAttribute="height" constant="30" id="RKW-fl-aSs"/>
+                                </constraints>
+                                <color key="tintColor" name="AppBlack"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" image="ic_search"/>
+                                <connections>
+                                    <action selector="btnSearchAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Wqo-Zw-ZlH"/>
+                                </connections>
+                            </button>
+                            <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="ZZl-2W-8LL">
+                                <rect key="frame" x="0.0" y="56.5" width="375" height="610.5"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CellCityList" id="0ss-85-ajM" customClass="CityListTVC" customModule="WeatherApp_Dev" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="50" width="375" height="288"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0ss-85-ajM" id="iVj-Ps-lOZ">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="288"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kje-XT-wAM">
+                                                    <rect key="frame" x="20" y="10" width="335" height="268"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mumbai" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y5Q-of-UdG">
+                                                            <rect key="frame" x="16" y="16" width="251" height="22"/>
+                                                            <fontDescription key="fontDescription" name="Inter-SemiBold" family="Inter" pointSize="18"/>
+                                                            <color key="textColor" name="AppWhite"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BPt-xV-N9e">
+                                                            <rect key="frame" x="283" y="16" width="36" height="36"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="36" id="32z-eR-zDi"/>
+                                                                <constraint firstAttribute="width" constant="36" id="SQA-vQ-kTB"/>
+                                                            </constraints>
+                                                        </imageView>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="lzG-zV-YG3">
+                                                            <rect key="frame" x="16" y="60" width="303" height="192"/>
+                                                            <subviews>
+                                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="p1F-hR-vGT">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="143.5" height="192"/>
+                                                                    <subviews>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8MU-hQ-VYh">
+                                                                            <rect key="frame" x="0.0" y="0.0" width="143.5" height="17"/>
+                                                                            <fontDescription key="fontDescription" name="Inter-Medium" family="Inter" pointSize="14"/>
+                                                                            <color key="textColor" name="AppWhite"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Current Temp" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gqo-jX-9sC">
+                                                                            <rect key="frame" x="0.0" y="25" width="143.5" height="17"/>
+                                                                            <fontDescription key="fontDescription" name="Inter-Medium" family="Inter" pointSize="14"/>
+                                                                            <color key="textColor" name="AppWhite"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="High Low Temp" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5a5-Lu-Zlb">
+                                                                            <rect key="frame" x="0.0" y="50" width="143.5" height="17"/>
+                                                                            <fontDescription key="fontDescription" name="Inter-Medium" family="Inter" pointSize="14"/>
+                                                                            <color key="textColor" name="AppWhite"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Weather" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PR1-MX-dkO">
+                                                                            <rect key="frame" x="0.0" y="75" width="143.5" height="17"/>
+                                                                            <fontDescription key="fontDescription" name="Inter-Medium" family="Inter" pointSize="14"/>
+                                                                            <color key="textColor" name="AppWhite"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Humidity" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mfB-Wx-GuD">
+                                                                            <rect key="frame" x="0.0" y="100" width="143.5" height="17"/>
+                                                                            <fontDescription key="fontDescription" name="Inter-Medium" family="Inter" pointSize="14"/>
+                                                                            <color key="textColor" name="AppWhite"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wind Speed" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kAA-UL-lS7">
+                                                                            <rect key="frame" x="0.0" y="125" width="143.5" height="17"/>
+                                                                            <fontDescription key="fontDescription" name="Inter-Medium" family="Inter" pointSize="14"/>
+                                                                            <color key="textColor" name="AppWhite"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sunrise Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nvF-LK-TNq">
+                                                                            <rect key="frame" x="0.0" y="150" width="143.5" height="17"/>
+                                                                            <fontDescription key="fontDescription" name="Inter-Medium" family="Inter" pointSize="14"/>
+                                                                            <color key="textColor" name="AppWhite"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sunset Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u4e-Wi-ZpA">
+                                                                            <rect key="frame" x="0.0" y="175" width="143.5" height="17"/>
+                                                                            <fontDescription key="fontDescription" name="Inter-Medium" family="Inter" pointSize="14"/>
+                                                                            <color key="textColor" name="AppWhite"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
+                                                                    </subviews>
+                                                                </stackView>
+                                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="xZL-oj-soA">
+                                                                    <rect key="frame" x="159.5" y="0.0" width="143.5" height="192"/>
+                                                                    <subviews>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Time" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bcg-ts-cRd">
+                                                                            <rect key="frame" x="0.0" y="0.0" width="143.5" height="17"/>
+                                                                            <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="14"/>
+                                                                            <color key="textColor" name="AppWhite"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current Temp" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A6I-8H-TIO">
+                                                                            <rect key="frame" x="0.0" y="25" width="143.5" height="17"/>
+                                                                            <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="14"/>
+                                                                            <color key="textColor" name="AppWhite"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="High Low Temp" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uls-rl-rPi">
+                                                                            <rect key="frame" x="0.0" y="50" width="143.5" height="17"/>
+                                                                            <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="14"/>
+                                                                            <color key="textColor" name="AppWhite"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Weather" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fl3-BG-xRV">
+                                                                            <rect key="frame" x="0.0" y="75" width="143.5" height="17"/>
+                                                                            <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="14"/>
+                                                                            <color key="textColor" name="AppWhite"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Humidity" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A7R-2S-kxV">
+                                                                            <rect key="frame" x="0.0" y="100" width="143.5" height="17"/>
+                                                                            <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="14"/>
+                                                                            <color key="textColor" name="AppWhite"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wind Speed" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AhM-es-g2t">
+                                                                            <rect key="frame" x="0.0" y="125" width="143.5" height="17"/>
+                                                                            <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="14"/>
+                                                                            <color key="textColor" name="AppWhite"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sunrise TIme" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RYM-XY-5Eg">
+                                                                            <rect key="frame" x="0.0" y="150" width="143.5" height="17"/>
+                                                                            <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="14"/>
+                                                                            <color key="textColor" name="AppWhite"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sunset Time" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PUi-UL-Oyn">
+                                                                            <rect key="frame" x="0.0" y="175" width="143.5" height="17"/>
+                                                                            <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="14"/>
+                                                                            <color key="textColor" name="AppWhite"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
+                                                                    </subviews>
+                                                                </stackView>
+                                                            </subviews>
+                                                        </stackView>
+                                                    </subviews>
+                                                    <color key="backgroundColor" name="AppBlack"/>
+                                                    <constraints>
+                                                        <constraint firstItem="BPt-xV-N9e" firstAttribute="top" secondItem="Kje-XT-wAM" secondAttribute="top" constant="16" id="8Lw-or-GMZ"/>
+                                                        <constraint firstItem="y5Q-of-UdG" firstAttribute="leading" secondItem="Kje-XT-wAM" secondAttribute="leading" constant="16" id="EuD-C8-ZUU"/>
+                                                        <constraint firstItem="BPt-xV-N9e" firstAttribute="leading" secondItem="y5Q-of-UdG" secondAttribute="trailing" constant="16" id="OnF-g7-EWC"/>
+                                                        <constraint firstAttribute="bottom" secondItem="lzG-zV-YG3" secondAttribute="bottom" constant="16" id="SJm-JG-3Y8"/>
+                                                        <constraint firstItem="lzG-zV-YG3" firstAttribute="leading" secondItem="Kje-XT-wAM" secondAttribute="leading" constant="16" id="SO0-Eu-aN5"/>
+                                                        <constraint firstItem="lzG-zV-YG3" firstAttribute="top" secondItem="BPt-xV-N9e" secondAttribute="bottom" constant="8" id="lj8-eA-LMg"/>
+                                                        <constraint firstAttribute="trailing" secondItem="BPt-xV-N9e" secondAttribute="trailing" constant="16" id="opQ-Aw-N3J"/>
+                                                        <constraint firstItem="y5Q-of-UdG" firstAttribute="top" secondItem="Kje-XT-wAM" secondAttribute="top" constant="16" id="uEs-bM-AYe"/>
+                                                        <constraint firstAttribute="trailing" secondItem="lzG-zV-YG3" secondAttribute="trailing" constant="16" id="y2k-AK-ddU"/>
+                                                    </constraints>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                            <real key="value" value="8"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </view>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="Kje-XT-wAM" secondAttribute="bottom" constant="10" id="AuI-zA-082"/>
+                                                <constraint firstItem="Kje-XT-wAM" firstAttribute="leading" secondItem="iVj-Ps-lOZ" secondAttribute="leading" constant="20" id="H0y-nc-Ne3"/>
+                                                <constraint firstAttribute="trailing" secondItem="Kje-XT-wAM" secondAttribute="trailing" constant="20" id="Qfo-eJ-lh0"/>
+                                                <constraint firstItem="Kje-XT-wAM" firstAttribute="top" secondItem="iVj-Ps-lOZ" secondAttribute="top" constant="10" id="i0F-g4-9Ax"/>
+                                            </constraints>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                    <real key="value" value="8"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <connections>
+                                            <outlet property="imgvIcon" destination="BPt-xV-N9e" id="WKp-CH-FrD"/>
+                                            <outlet property="lblCity" destination="y5Q-of-UdG" id="xxf-sf-Yy5"/>
+                                            <outlet property="lblCurrentTemp" destination="A6I-8H-TIO" id="EPW-mz-Kna"/>
+                                            <outlet property="lblHighLowTemp" destination="Uls-rl-rPi" id="koI-n1-0QA"/>
+                                            <outlet property="lblHumidity" destination="A7R-2S-kxV" id="JXb-aJ-VNM"/>
+                                            <outlet property="lblSunriseTime" destination="RYM-XY-5Eg" id="F7d-i8-6EG"/>
+                                            <outlet property="lblSunsetTime" destination="PUi-UL-Oyn" id="miW-xu-Ekc"/>
+                                            <outlet property="lblTime" destination="Bcg-ts-cRd" id="Ew3-Ie-6A3"/>
+                                            <outlet property="lblWeather" destination="fl3-BG-xRV" id="kFK-AY-INt"/>
+                                            <outlet property="lblWindSpeed" destination="AhM-es-g2t" id="u2v-OT-m0U"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="QTC-9h-J4B"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="fdu-ZR-2cs"/>
+                                </connections>
+                            </tableView>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No weather data available" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="chq-Fd-kNw">
+                                <rect key="frame" x="89" y="324" width="197" height="19.5"/>
+                                <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="16"/>
+                                <color key="textColor" name="AppGray"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" name="AppBg"/>
+                        <constraints>
+                            <constraint firstItem="ZZl-2W-8LL" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="0Rg-0K-X29"/>
+                            <constraint firstItem="XvQ-Xj-frf" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="5UC-Hm-1gz"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="ZZl-2W-8LL" secondAttribute="bottom" id="M0N-jc-TjU"/>
+                            <constraint firstItem="chq-Fd-kNw" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Q4f-SJ-hYt"/>
+                            <constraint firstAttribute="trailing" secondItem="1w7-Cd-avX" secondAttribute="trailing" constant="20" id="Rkl-al-Plm"/>
+                            <constraint firstItem="XvQ-Xj-frf" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="ScP-mS-Bdn"/>
+                            <constraint firstItem="ZZl-2W-8LL" firstAttribute="top" secondItem="XvQ-Xj-frf" secondAttribute="bottom" id="Vfv-Mu-bk2"/>
+                            <constraint firstItem="1w7-Cd-avX" firstAttribute="centerY" secondItem="XvQ-Xj-frf" secondAttribute="centerY" id="bVb-av-UWA"/>
+                            <constraint firstAttribute="trailing" secondItem="ZZl-2W-8LL" secondAttribute="trailing" id="xds-YW-GAP"/>
+                            <constraint firstItem="chq-Fd-kNw" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="zc0-YX-0ds"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="pUi-nX-cMH"/>
+                    <connections>
+                        <outlet property="lblNoData" destination="chq-Fd-kNw" id="zIh-kC-Ppf"/>
+                        <outlet property="tblCityList" destination="ZZl-2W-8LL" id="SNF-Xe-Njl"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -44,8 +292,18 @@
         </scene>
     </scenes>
     <resources>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
+        <image name="ic_search" width="48" height="48"/>
+        <namedColor name="AppBg">
+            <color red="0.98000001907348633" green="0.98000001907348633" blue="0.98000001907348633" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="AppBlack">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="AppGray">
+            <color red="0.66699999570846558" green="0.66699999570846558" blue="0.66699999570846558" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="AppWhite">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>

@@ -73,51 +73,20 @@ class ApiCall: NSObject {
                         completion(false, AlertMessage.msgUnauthorized as AnyObject)
                     }
                 } else {
-                    if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 201 {
-                        if data.count > 0 {
-                            if let convertedJsonIntoDict = try JSONSerialization.jsonObject(with: data, options: []) as? NSDictionary, Environment.Val.appID == 0 {
-                                print(convertedJsonIntoDict)
-                            }
 
-                            let dictResponse = try decoder.decode(model, from: data)
-                            mainThread {
-                                completion(true, dictResponse as AnyObject)
-                            }
-                        } else {
-                            mainThread {
-                                completion(true, nil)
-                            }
-                        }
-                    } else if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 {
-                        if data.count > 0 {
-                            if let convertedJsonIntoDict = try JSONSerialization.jsonObject(with: data, options: []) as? NSDictionary, Environment.Val.appID == 0 {
-                                print(convertedJsonIntoDict)
-                            }
+                    if let convertedJsonIntoDict = try JSONSerialization.jsonObject(with: data, options: []) as? NSDictionary, Environment.Val.appID == 0 {
+                        print(convertedJsonIntoDict)
+                    }
 
-                            let dictResponse = try decoder.decode(model, from: data)
-                            mainThread {
-                                completion(true, dictResponse as AnyObject)
-                            }
-                        } else {
-                            mainThread {
-                                completion(true, nil)
-                            }
-                        }
-                    } else if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 404 {
-                        if data.count > 0 {
-                            let dictResponse = try decoder.decode(model, from: data)
-                            mainThread {
-                                completion(false, dictResponse as AnyObject)
-                            }
-                        } else {
-                            mainThread {
-                                completion(false, nil)
-                            }
+                    if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 {
+                        let dictResponse = try decoder.decode(model, from: data)
+                        mainThread {
+                            completion(true, dictResponse as AnyObject)
                         }
                     } else {
                         let dictResponse = try decoder.decode(GeneralResponseModel.self, from: data)
                         mainThread {
-                            completion(false, dictResponse.Msg as AnyObject)
+                            completion(false, dictResponse.message as AnyObject)
                         }
                     }
                 }
@@ -177,51 +146,20 @@ class ApiCall: NSObject {
                         completion(false, AlertMessage.msgUnauthorized as AnyObject)
                     }
                 } else {
-                    if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 201 {
-                        if data.count > 0 {
-                            if let convertedJsonIntoDict = try JSONSerialization.jsonObject(with: data, options: []) as? NSDictionary, Environment.Val.appID == 0 {
-                                print(convertedJsonIntoDict)
-                            }
 
-                            let dictResponse = try decoder.decode(model, from: data)
-                            mainThread {
-                                completion(true, dictResponse as AnyObject)
-                            }
-                        } else {
-                            mainThread {
-                                completion(true, nil)
-                            }
-                        }
-                    } else if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 {
-                        if data.count > 0 {
-                            if let convertedJsonIntoDict = try JSONSerialization.jsonObject(with: data, options: []) as? NSDictionary, Environment.Val.appID == 0 {
-                                print(convertedJsonIntoDict)
-                            }
+                    if let convertedJsonIntoDict = try JSONSerialization.jsonObject(with: data, options: []) as? NSDictionary, Environment.Val.appID == 0 {
+                        print(convertedJsonIntoDict)
+                    }
 
-                            let dictResponse = try decoder.decode(model, from: data)
-                            mainThread {
-                                completion(true, dictResponse as AnyObject)
-                            }
-                        } else {
-                            mainThread {
-                                completion(true, nil)
-                            }
-                        }
-                    } else if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 404 {
-                        if data.count > 0 {
-                            let dictResponse = try decoder.decode(model, from: data)
-                            mainThread {
-                                completion(false, dictResponse as AnyObject)
-                            }
-                        } else {
-                            mainThread {
-                                completion(false, nil)
-                            }
+                    if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 {
+                        let dictResponse = try decoder.decode(model, from: data)
+                        mainThread {
+                            completion(true, dictResponse as AnyObject)
                         }
                     } else {
                         let dictResponse = try decoder.decode(GeneralResponseModel.self, from: data)
                         mainThread {
-                            completion(false, dictResponse.Msg as AnyObject)
+                            completion(false, dictResponse.message as AnyObject)
                         }
                     }
                 }
@@ -288,51 +226,20 @@ class ApiCall: NSObject {
                         completion(false, AlertMessage.msgUnauthorized as AnyObject)
                     }
                 } else {
-                    if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 201 {
-                        if data.count > 0 {
-                            if let convertedJsonIntoDict = try JSONSerialization.jsonObject(with: data, options: []) as? NSDictionary, Environment.Val.appID == 0 {
-                                print(convertedJsonIntoDict)
-                            }
 
-                            let dictResponse = try decoder.decode(model, from: data)
-                            mainThread {
-                                completion(true, dictResponse as AnyObject)
-                            }
-                        } else {
-                            mainThread {
-                                completion(true, nil)
-                            }
-                        }
-                    } else if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 {
-                        if data.count > 0 {
-                            if let convertedJsonIntoDict = try JSONSerialization.jsonObject(with: data, options: []) as? NSDictionary, Environment.Val.appID == 0 {
-                                print(convertedJsonIntoDict)
-                            }
+                    if let convertedJsonIntoDict = try JSONSerialization.jsonObject(with: data, options: []) as? NSDictionary, Environment.Val.appID == 0 {
+                        print(convertedJsonIntoDict)
+                    }
 
-                            let dictResponse = try decoder.decode(model, from: data)
-                            mainThread {
-                                completion(true, dictResponse as AnyObject)
-                            }
-                        } else {
-                            mainThread {
-                                completion(true, nil)
-                            }
-                        }
-                    } else if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 404 {
-                        if data.count > 0 {
-                            let dictResponse = try decoder.decode(model, from: data)
-                            mainThread {
-                                completion(false, dictResponse as AnyObject)
-                            }
-                        } else {
-                            mainThread {
-                                completion(false, nil)
-                            }
+                    if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 {
+                        let dictResponse = try decoder.decode(model, from: data)
+                        mainThread {
+                            completion(true, dictResponse as AnyObject)
                         }
                     } else {
                         let dictResponse = try decoder.decode(GeneralResponseModel.self, from: data)
                         mainThread {
-                            completion(false, dictResponse.Msg as AnyObject)
+                            completion(false, dictResponse.message as AnyObject)
                         }
                     }
                 }
@@ -400,51 +307,20 @@ class ApiCall: NSObject {
                         completion(false, AlertMessage.msgUnauthorized as AnyObject)
                     }
                 } else {
-                    if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 201 {
-                        if data.count > 0 {
-                            if let convertedJsonIntoDict = try JSONSerialization.jsonObject(with: data, options: []) as? NSDictionary, Environment.Val.appID == 0 {
-                                print(convertedJsonIntoDict)
-                            }
 
-                            let dictResponse = try decoder.decode(model, from: data)
-                            mainThread {
-                                completion(true, dictResponse as AnyObject)
-                            }
-                        } else {
-                            mainThread {
-                                completion(true, nil)
-                            }
-                        }
-                    } else if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 {
-                        if data.count > 0 {
-                            if let convertedJsonIntoDict = try JSONSerialization.jsonObject(with: data, options: []) as? NSDictionary, Environment.Val.appID == 0 {
-                                print(convertedJsonIntoDict)
-                            }
+                    if let convertedJsonIntoDict = try JSONSerialization.jsonObject(with: data, options: []) as? NSDictionary, Environment.Val.appID == 0 {
+                        print(convertedJsonIntoDict)
+                    }
 
-                            let dictResponse = try decoder.decode(model, from: data)
-                            mainThread {
-                                completion(true, dictResponse as AnyObject)
-                            }
-                        } else {
-                            mainThread {
-                                completion(true, nil)
-                            }
-                        }
-                    } else if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 404 {
-                        if data.count > 0 {
-                            let dictResponse = try decoder.decode(model, from: data)
-                            mainThread {
-                                completion(false, dictResponse as AnyObject)
-                            }
-                        } else {
-                            mainThread {
-                                completion(false, nil)
-                            }
+                    if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 {
+                        let dictResponse = try decoder.decode(model, from: data)
+                        mainThread {
+                            completion(true, dictResponse as AnyObject)
                         }
                     } else {
                         let dictResponse = try decoder.decode(GeneralResponseModel.self, from: data)
                         mainThread {
-                            completion(false, dictResponse.Msg as AnyObject)
+                            completion(false, dictResponse.message as AnyObject)
                         }
                     }
                 }
@@ -512,51 +388,20 @@ class ApiCall: NSObject {
                         completion(false, AlertMessage.msgUnauthorized as AnyObject)
                     }
                 } else {
-                    if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 201 {
-                        if data.count > 0 {
-                            if let convertedJsonIntoDict = try JSONSerialization.jsonObject(with: data, options: []) as? NSDictionary, Environment.Val.appID == 0 {
-                                print(convertedJsonIntoDict)
-                            }
 
-                            let dictResponse = try decoder.decode(model, from: data)
-                            mainThread {
-                                completion(true, dictResponse as AnyObject)
-                            }
-                        } else {
-                            mainThread {
-                                completion(true, nil)
-                            }
-                        }
-                    } else if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 {
-                        if data.count > 0 {
-                            if let convertedJsonIntoDict = try JSONSerialization.jsonObject(with: data, options: []) as? NSDictionary, Environment.Val.appID == 0 {
-                                print(convertedJsonIntoDict)
-                            }
+                    if let convertedJsonIntoDict = try JSONSerialization.jsonObject(with: data, options: []) as? NSDictionary, Environment.Val.appID == 0 {
+                        print(convertedJsonIntoDict)
+                    }
 
-                            let dictResponse = try decoder.decode(model, from: data)
-                            mainThread {
-                                completion(true, dictResponse as AnyObject)
-                            }
-                        } else {
-                            mainThread {
-                                completion(true, nil)
-                            }
-                        }
-                    } else if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 404 {
-                        if data.count > 0 {
-                            let dictResponse = try decoder.decode(model, from: data)
-                            mainThread {
-                                completion(false, dictResponse as AnyObject)
-                            }
-                        } else {
-                            mainThread {
-                                completion(false, nil)
-                            }
+                    if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 {
+                        let dictResponse = try decoder.decode(model, from: data)
+                        mainThread {
+                            completion(true, dictResponse as AnyObject)
                         }
                     } else {
                         let dictResponse = try decoder.decode(GeneralResponseModel.self, from: data)
                         mainThread {
-                            completion(false, dictResponse.Msg as AnyObject)
+                            completion(false, dictResponse.message as AnyObject)
                         }
                     }
                 }
@@ -585,18 +430,19 @@ class ApiCall: NSObject {
 
 //MARK: - GeneralResponseModel Struct
 struct GeneralResponseModel : Codable {
-    let Error : Int?
-    let Msg : String?
+
+    let cod : Int?
+    let message : String?
     
     enum CodingKeys: String, CodingKey {
         
-        case Error = "Error"
-        case Msg = "Msg"
+        case cod = "cod"
+        case message = "message"
     }
     
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
-        Error = try values.decodeIfPresent(Int.self, forKey: .Error)
-        Msg = try values.decodeIfPresent(String.self, forKey: .Msg)
+        cod = try values.decodeIfPresent(Int.self, forKey: .cod)
+        message = try values.decodeIfPresent(String.self, forKey: .message)
     }
 }
