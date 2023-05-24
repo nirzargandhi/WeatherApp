@@ -5,6 +5,17 @@
 
 class CityListVC: UIViewController {
 
+    //MARK: - UIButton Outlet
+    @IBOutlet weak var btnSearch: UIButton!
+
+    //MARK: - UITextField Outlet
+    @IBOutlet weak var txtSearch: UITextField!
+
+    //MARK: - NSLayoutConstraint Outlets
+    @IBOutlet weak var nslcTxtSearchTop: NSLayoutConstraint!
+    @IBOutlet weak var nslcTxtSearchBottom: NSLayoutConstraint!
+    @IBOutlet weak var nslcTxtSearchHeight: NSLayoutConstraint!
+
     //MARK: - UITableView Outlet
     @IBOutlet weak var tblCityList: UITableView!
 
@@ -38,6 +49,17 @@ class CityListVC: UIViewController {
         tblCityList.rowHeight = UITableView.automaticDimension
         tblCityList.estimatedRowHeight = UITableView.automaticDimension
         tblCityList.tableFooterView = UIView()
+
+        if let strLastSearchedLocation = UserDefaults.standard.string(forKey: UserDefaultsKey.kLastSearchedLocation) {
+
+            txtSearch.text = strLastSearchedLocation
+
+            btnSearch.isSelected = true
+
+            updateUI()
+
+            wsSearchWeatherData(isLoader: false)
+        }
     }
 
     //MARK: - Check Location Permision Method
@@ -134,9 +156,31 @@ class CityListVC: UIViewController {
     //MARK: - UIButton Action Method
     @IBAction func btnSearchAction(_ sender: Any) {
 
+        hideIQKeyboard()
+
+        clearTextField()
+
+        btnSearch.isSelected = !btnSearch.isSelected
+
+        updateUI()
     }
 
-    //MARK: - Webservice Call Method
+    //MARK: - Update UI Method
+    private func updateUI() {
+
+        txtSearch.isHidden = !btnSearch.isSelected
+
+        nslcTxtSearchTop.constant = btnSearch.isSelected ? 16 : 0
+        nslcTxtSearchBottom.constant = btnSearch.isSelected ? 16 : 0
+        nslcTxtSearchHeight.constant = btnSearch.isSelected ? 45 : 0
+    }
+
+    //MARK: - Clear TextField Method
+    private func clearTextField() {
+        txtSearch.text = ""
+    }
+
+    //MARK: - Webservice Call Methods
     func wsWeatherData(latitude : Double, longitude : Double) {
 
         guard case ConnectionCheck.isConnectedToNetwork() = true else {
@@ -149,6 +193,7 @@ class CityListVC: UIViewController {
         ApiCall().get(apiUrl: strURL, model: WeatherModel.self) { [weak self] (success, responseData) in guard let self else { return }
 
             if success, let responseData = responseData as? WeatherModel, responseData.cod == 200 {
+                
                 arrWeatherData.append(responseData)
 
                 if arrWeatherData.count > 0 {
@@ -162,7 +207,48 @@ class CityListVC: UIViewController {
                 }
             } else {
                 mainThread {
-                    Utility().dynamicToastMessage(strMessage: AlertMessage.msgError)
+                    self.view.makeToast(responseData != nil ? Utility().wsFailResponseMessage(responseData: responseData!) : AlertMessage.msgError)
+
+                    if self.arrWeatherData.count == 0 {
+                        self.lblNoData.isHidden = false
+                        self.tblCityList.isHidden = true
+                    }
+                }
+            }
+        }
+    }
+
+    func wsSearchWeatherData(isLoader : Bool = true) {
+
+        guard case ConnectionCheck.isConnectedToNetwork() = true else {
+            Utility().dynamicToastMessage(strMessage: AlertMessage.msgNetworkConnection)
+            return
+        }
+
+        let strURL = "\(WebServiceURL.weatherURL)\(WebServiceParameter.pSearch)=\(txtSearch.text ?? "")&\(WebServiceParameter.pUnits)=metric&\(WebServiceParameter.pAppId)=\(OpenWeather.pAPIKey)"
+
+        ApiCall().get(apiUrl: strURL, model: WeatherModel.self, isLoader: isLoader) { [weak self] (success, responseData) in guard let self else { return }
+
+            if success, let responseData = responseData as? WeatherModel, responseData.cod == 200 {
+
+                arrWeatherData.append(responseData)
+
+                clearTextField()
+
+                if arrWeatherData.count > 0 {
+                    tblCityList.reloadData()
+
+                    tblCityList.isHidden = false
+                    lblNoData.isHidden = true
+                } else {
+                    lblNoData.isHidden = false
+                    tblCityList.isHidden = true
+                }
+            } else {
+                mainThread {
+                    self.view.makeToast(responseData != nil ? Utility().wsFailResponseMessage(responseData: responseData!) : AlertMessage.msgError)
+
+                    self.clearTextField()
 
                     if self.arrWeatherData.count == 0 {
                         self.lblNoData.isHidden = false

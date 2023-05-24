@@ -67,6 +67,35 @@
                                     <action selector="btnSearchAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Wqo-Zw-ZlH"/>
                                 </connections>
                             </button>
+                            <textField hidden="YES" opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Search by City, State, Country" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mmC-kU-zeM">
+                                <rect key="frame" x="20" y="56.5" width="335" height="0.0"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" id="1Qh-ER-tJK"/>
+                                </constraints>
+                                <color key="textColor" name="AppBlack"/>
+                                <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="16"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="done"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="paddingLeftView">
+                                        <real key="value" value="16"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="paddingRightView">
+                                        <real key="value" value="16"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="0.5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" name="AppLightGray"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="PUe-UA-onI"/>
+                                </connections>
+                            </textField>
                             <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="ZZl-2W-8LL">
                                 <rect key="frame" x="0.0" y="56.5" width="375" height="610.5"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -270,20 +299,28 @@
                         <constraints>
                             <constraint firstItem="ZZl-2W-8LL" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="0Rg-0K-X29"/>
                             <constraint firstItem="XvQ-Xj-frf" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="5UC-Hm-1gz"/>
+                            <constraint firstItem="mmC-kU-zeM" firstAttribute="top" secondItem="XvQ-Xj-frf" secondAttribute="bottom" id="C9o-ok-FCX"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="ZZl-2W-8LL" secondAttribute="bottom" id="M0N-jc-TjU"/>
                             <constraint firstItem="chq-Fd-kNw" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Q4f-SJ-hYt"/>
                             <constraint firstAttribute="trailing" secondItem="1w7-Cd-avX" secondAttribute="trailing" constant="20" id="Rkl-al-Plm"/>
                             <constraint firstItem="XvQ-Xj-frf" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="ScP-mS-Bdn"/>
-                            <constraint firstItem="ZZl-2W-8LL" firstAttribute="top" secondItem="XvQ-Xj-frf" secondAttribute="bottom" id="Vfv-Mu-bk2"/>
+                            <constraint firstItem="mmC-kU-zeM" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="UeZ-yQ-Mqr"/>
                             <constraint firstItem="1w7-Cd-avX" firstAttribute="centerY" secondItem="XvQ-Xj-frf" secondAttribute="centerY" id="bVb-av-UWA"/>
+                            <constraint firstItem="ZZl-2W-8LL" firstAttribute="top" secondItem="mmC-kU-zeM" secondAttribute="bottom" id="jvL-VQ-JBC"/>
+                            <constraint firstAttribute="trailing" secondItem="mmC-kU-zeM" secondAttribute="trailing" constant="20" id="mii-U7-Mff"/>
                             <constraint firstAttribute="trailing" secondItem="ZZl-2W-8LL" secondAttribute="trailing" id="xds-YW-GAP"/>
                             <constraint firstItem="chq-Fd-kNw" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="zc0-YX-0ds"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="pUi-nX-cMH"/>
                     <connections>
+                        <outlet property="btnSearch" destination="1w7-Cd-avX" id="FWE-GS-6ou"/>
                         <outlet property="lblNoData" destination="chq-Fd-kNw" id="zIh-kC-Ppf"/>
+                        <outlet property="nslcTxtSearchBottom" destination="jvL-VQ-JBC" id="maO-TG-gyt"/>
+                        <outlet property="nslcTxtSearchHeight" destination="1Qh-ER-tJK" id="1XA-xb-fSR"/>
+                        <outlet property="nslcTxtSearchTop" destination="C9o-ok-FCX" id="q9m-xi-Xz5"/>
                         <outlet property="tblCityList" destination="ZZl-2W-8LL" id="SNF-Xe-Njl"/>
+                        <outlet property="txtSearch" destination="mmC-kU-zeM" id="pkB-Ws-TWb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -301,6 +338,9 @@
         </namedColor>
         <namedColor name="AppGray">
             <color red="0.66699999570846558" green="0.66699999570846558" blue="0.66699999570846558" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="AppLightGray">
+            <color red="0.82700002193450928" green="0.82700002193450928" blue="0.82700002193450928" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="AppWhite">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

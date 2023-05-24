@@ -22,8 +22,6 @@ extension CityListVC : CLLocationManagerDelegate {
             UserDefaults.standard.set(strCurrentLocation, forKey: UserDefaultsKey.kCurrentLocation)
 
             if isAPICallFirstTime {
-                arrWeatherData = [WeatherModel]()
-
                 wsWeatherData(latitude: lastLocation.coordinate.latitude, longitude: lastLocation.coordinate.longitude)
 
                 isAPICallFirstTime = false

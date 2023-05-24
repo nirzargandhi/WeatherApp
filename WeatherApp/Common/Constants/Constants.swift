@@ -34,8 +34,6 @@ enum AllStoryBoard {
 enum ViewControllerName {
 
     static let kCityListVC = "CityListVC"
-    static let kSearchCityVC = "SearchCityVC"
-    static let kWeatherVC = "WeatherVC"
 }
 
 //MARK: - Cell Identifiers
@@ -111,6 +109,7 @@ enum WebServiceParameter {
 
     static let pLat = "lat"
     static let pLon = "lon"
+    static let pSearch = "q"
     static let pUnits = "units"
     static let pAppId = "appid"
 }
